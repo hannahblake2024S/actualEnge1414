@@ -6,7 +6,7 @@
 const byte rows = 4;
 const byte colms = 4;
 
-byte data_count = 0;
+//byte data_count = 0;
 
 char hexaKeys [rows][colms] = 
 {
@@ -40,9 +40,9 @@ void loop()
 
   if (customKey)
   {
-    Data[data_count] = customKey;
+    //Data[data_count] = customKey;
     Serial.println(customKey); //prints out which key is pressed
-    data_count++;
+    //data_count++;
   }
 
 
