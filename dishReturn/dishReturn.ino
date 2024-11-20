@@ -2,7 +2,10 @@
 #include <Keypad.h>
 //Missing FQBN (Fully Qualified Board Name)
 //Compilation error: Missing FQBN (Fully Qualified Board Name)
-
+pinMode(13, OUTPUT); //red
+pinMode(12, OUTPUT);//yellow
+pinMode(11, OUTPUT);//green
+pinMode(10, OUTPUT);//blue
 const byte rows = 4;
 const byte colm = 4;
 
@@ -114,4 +117,60 @@ void loop()
   //   digitalWrite(rowPins[row], HIGH);
   // }
   // delay(10); // Debounce delay
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//cap is percentage (please give me (count/amount can hold)*100)
+void updateLights(int cap){
+if (cap<=50){
+  digitalWrite(13, HIGH);
+  digitalWrite(12, LOW);
+  digitalWrite(11, LOW);
+}else if (cap<=75){
+  digitalWrite(12, HIGH);
+  digitalWrite(13, LOW);
+  digitalWrite(11, LOW);
+}else(){
+  digitalWrite(11, HIGH);
+  digitalWrite(13, LOW);
+  digitalWrite(12, LOW);
+}
 }
