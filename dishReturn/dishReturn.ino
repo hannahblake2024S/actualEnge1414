@@ -18,8 +18,8 @@ char keys[rows][colm] =
   {'*', '0', '#', 'D'},
 };
 
-byte rowPins[rows] = {7, 6, 5, 4}; 
-byte colPins[col] = {3, 2, 1, 0}; 
+byte rowPins[rows] = {9, 8, 7, 6}; 
+byte colPins[col] = {5, 4, 3, 2}; 
 
 Keypad hokieKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, rows, colm);
 
