@@ -7,11 +7,19 @@ pinMode(12, OUTPUT);//yellow
 pinMode(11, OUTPUT);//green
 pinMode(10, OUTPUT);//blue
 const byte rows = 4;
+<<<<<<< Updated upstream
 const byte colm = 4;
 
 //byte data_count = 0;
 
 char keys[rows][colm] = 
+=======
+const byte col = 4;
+
+//byte data_count = 0;
+
+char hexaKeys [rows][col] = 
+>>>>>>> Stashed changes
 {
   {'1', '2', '3', 'A'},
   {'4', '5', '5', 'B'},
@@ -20,8 +28,9 @@ char keys[rows][colm] =
 };
 
 byte rowPins[rows] = {7, 6, 5, 4}; 
-byte colPins[colm] = {3, 2, 1, 0}; 
+byte colPins[col] = {3, 2, 1, 0}; 
 
+<<<<<<< Updated upstream
 Keypad hokieKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, rows, colm);
 
 char inputList[100];
@@ -30,6 +39,9 @@ int inputIndex = 0;
 int hokieID = -1;
 char dishType = ' ';
 int numDishes = 0;
+=======
+Keypad customKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, rows, col);
+>>>>>>> Stashed changes
 
 void setup() 
 {
