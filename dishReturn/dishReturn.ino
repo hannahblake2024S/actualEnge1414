@@ -8,7 +8,7 @@ const byte colms = 4;
 
 //byte data_count = 0;
 
-char hexaKeys [rows][colms] = 
+char keys[rows][colms] = 
 {
   {'1', '2', '3', 'A'},
   {'4', '5', '5', 'B'},
@@ -21,6 +21,7 @@ byte colPins[colms] = {3, 2, 1, 0};
 
 Keypad customKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, rows, colms);
 
+
 void setup() 
 {
   Serial.begin(9600); //this is the so that when the program starts, 
@@ -29,8 +30,15 @@ void setup()
                       //the serial communication is a method of sending and recieving data one bit at a 
                       //time over a single wire or channel
   // put your setup code here, to run once:
-  pinMode(keyPin, INPUT_PULLUP); // Set the key pin as input with pull-up resistor [8, 10]
+ for (int i = 0; i < rows; i++)
+ {
+  pinMode(rowsPins[i], OUTPUT); // Set the key pin as input with pull-up resistor [8, 10]
+ }
 
+ for (int i = 0; i < colms; i++)
+ {
+  pinMode(colPins[i], INPUT_PULLUP); // Set the key pin as input with pull-up resistor [8, 10]
+ }
 
 }
 //test
@@ -38,14 +46,14 @@ void setup()
 void loop() 
 {
   // put your main code here, to run repeatedly:
-  char customKey = customKeypad.getKey();
+  // char customKey = customKeypad.getKey();
 
-  if (customKey)
-  {
-    //Data[data_count] = customKey;
-    Serial.print(customKey); //prints out which key is pressed
-    //data_count++;
-  }
+  // if (customKey)
+  // {
+  //   //Data[data_count] = customKey;
+  //   Serial.print(customKey); //prints out which key is pressed
+  //   //data_count++;
+  // }
 
   // int keyState = digitalRead(keyPin); // Read the state of the key pin [8, 10]
 
@@ -59,4 +67,26 @@ void loop()
   //     Serial.print(keyChar); // Print the key character to the serial monitor [2, 3, 8]
 
   // }
+
+  for (int row = 0; row < ROWS; row++) {
+
+    digitalWrite(rowPins[row], LOW);  
+
+    for (int col = 0; col < COLS; col++) {
+
+      if (digitalRead(colPins[col]) == LOW) {
+
+        Serial.print("Key Pressed: "); 
+
+        Serial.println(keys[row][col]); 
+
+      }
+
+    }
+
+    digitalWrite(rowPins[row], HIGH); 
+
+  }
+
+  delay(10); // Debounce delay
 }
