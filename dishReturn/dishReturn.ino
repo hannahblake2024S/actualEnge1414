@@ -29,6 +29,8 @@ void setup()
                       //the serial communication is a method of sending and recieving data one bit at a 
                       //time over a single wire or channel
   // put your setup code here, to run once:
+  pinMode(keyPin, INPUT_PULLUP); // Set the key pin as input with pull-up resistor [8, 10]
+
 
 }
 //test
@@ -41,9 +43,20 @@ void loop()
   if (customKey)
   {
     //Data[data_count] = customKey;
-    Serial.println(customKey); //prints out which key is pressed
+    Serial.print(customKey); //prints out which key is pressed
     //data_count++;
   }
 
+  // int keyState = digitalRead(keyPin); // Read the state of the key pin [8, 10]
 
+  // if (keyState == LOW) 
+  // { // Check if key is pressed (LOW means pressed with pull-up resistor) [8, 10]
+
+  //     // Determine which key is pressed based on your keyboard connection
+
+  //     char keyChar = 'A'; // Replace with the correct character for the pressed key
+
+  //     Serial.print(keyChar); // Print the key character to the serial monitor [2, 3, 8]
+
+  // }
 }
