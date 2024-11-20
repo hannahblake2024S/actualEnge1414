@@ -20,7 +20,7 @@ char keys[rows][colm] =
 byte rowPins[rows] = {9, 8, 7, 6}; 
 byte colPins[colm] = {5, 4, 3, 2}; 
 
-Keypad hokieKeypad = Keypad(makeKeymap(hokieKeypad), rowPins, colPins, rows, colm);
+Keypad hokieKeypad = Keypad(makeKeymap(keys), rowPins, colPins, rows, colm);
 
 int hokieID = -1;
 char dishType = ' ';
