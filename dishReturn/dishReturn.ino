@@ -1,10 +1,10 @@
 #include <Keypad.h>
 //Missing FQBN (Fully Qualified Board Name)
 //Compilation error: Missing FQBN (Fully Qualified Board Name)
-pinMode(13, OUTPUT); //red
-pinMode(12, OUTPUT);//yellow
-pinMode(11, OUTPUT);//green
-pinMode(10, OUTPUT);//blue
+//pinMode(13, OUTPUT); //red
+//pinMode(12, OUTPUT);//yellow
+//pinMode(11, OUTPUT);//green
+//pinMode(10, OUTPUT);//blue
 
 const byte rows = 4;
 const byte colm = 4;
