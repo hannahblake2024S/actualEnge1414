@@ -40,7 +40,7 @@ void setup()
 void loop() 
 {
   // put your main code here, to run repeatedly:
-  char keyEntry = Keypad.getKey();
+  char keyEntry = customKeypad.getKey();
 
   if (keyEntry)
   {
