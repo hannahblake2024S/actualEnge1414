@@ -1,4 +1,3 @@
-
 #include <Keypad.h>
 //Missing FQBN (Fully Qualified Board Name)
 //Compilation error: Missing FQBN (Fully Qualified Board Name)
@@ -21,7 +20,7 @@ char keys[rows][colm] =
 byte rowPins[rows] = {9, 8, 7, 6}; 
 byte colPins[colm] = {5, 4, 3, 2}; 
 
-Keypad hokieKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, rows, colm);
+Keypad hokieKeypad = Keypad(makeKeymap(hokieKeypad), rowPins, colPins, rows, colm);
 
 int hokieID = -1;
 char dishType = ' ';
@@ -41,15 +40,15 @@ void setup()
 void loop() 
 {
   // put your main code here, to run repeatedly:
-  char key = Keypad.getKey();
+  char keyEntry = Keypad.getKey();
 
-  if (key)
+  if (keyEntry)
   {
     if (hokieID == -1)
     {
-      if (key >= '0' && key <= '9')
+      if (keyEntry >= '0' && keyEntry <= '9')
       {
-        hokieID = key - '0';
+        hokieID = keyEntry - '0';
         Serial.print("hokieID: ");
         Serial.println(hokieID);
         Serial.println("Enter dish type (A-D): ");
@@ -57,9 +56,9 @@ void loop()
     }
     else if (dishType == ' ')
     {
-      if (key >= 'A' && key <= 'D')
+      if (keyEntry >= 'A' && keyEntry <= 'D')
       {
-        dishType = key;
+        dishType = keyEntry;
         Serial.print("dishType: ");
         Serial.println(dishType);
         Serial.println("Enter number of dishes (1-3): ");
@@ -67,9 +66,9 @@ void loop()
     }
     else if (numDishes == 0)
     {
-      if (key >= '1' && key <= '3')
+      if (keyEntry >= '1' && keyEntry <= '3')
       {
-        numDishes = key - '0';
+        numDishes = keyEntry;
         Serial.print("number of dishes: ");
         Serial.println(numDishes);
       }
