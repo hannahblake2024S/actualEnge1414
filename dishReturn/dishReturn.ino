@@ -19,7 +19,7 @@ char keys[rows][colm] =
 };
 
 byte rowPins[rows] = {9, 8, 7, 6}; 
-byte colPins[col] = {5, 4, 3, 2}; 
+byte colPins[colm] = {5, 4, 3, 2}; 
 
 Keypad hokieKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, rows, colm);
 
@@ -41,7 +41,7 @@ void setup()
 void loop() 
 {
   // put your main code here, to run repeatedly:
-  char key = keypad.getKey();
+  char key = Keypad.getKey();
 
   if (key)
   {
@@ -52,7 +52,7 @@ void loop()
         hokieID = key - '0';
         Serial.print("hokieID: ");
         Serial.println(hokieID);
-        Serial.println("Enter dish type (A-D): ")
+        Serial.println("Enter dish type (A-D): ");
       }
     }
     else if (dishType == ' ')
@@ -62,7 +62,7 @@ void loop()
         dishType = key;
         Serial.print("dishType: ");
         Serial.println(dishType);
-        Serial.println("Enter number of dishes (1-3): ")
+        Serial.println("Enter number of dishes (1-3): ");
       }
     }
     else if (numDishes == 0)
@@ -126,7 +126,7 @@ if (cap<=50){
   digitalWrite(12, HIGH);
   digitalWrite(13, LOW);
   digitalWrite(11, LOW);
-}else(){
+}else{
   digitalWrite(11, HIGH);
   digitalWrite(13, LOW);
   digitalWrite(12, LOW);
