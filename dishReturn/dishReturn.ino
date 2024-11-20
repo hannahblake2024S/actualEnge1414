@@ -1,10 +1,6 @@
 #include <Keypad.h>
-//Missing FQBN (Fully Qualified Board Name)
-//Compilation error: Missing FQBN (Fully Qualified Board Name)
-//pinMode(13, OUTPUT); //red
-//pinMode(12, OUTPUT);//yellow
-//pinMode(11, OUTPUT);//green
-//pinMode(10, OUTPUT);//blue
+
+
 
 const byte rows = 4;
 const byte colm = 4;
@@ -20,7 +16,7 @@ char keys[rows][colm] =
 byte rowPins[rows] = {9, 8, 7, 6}; 
 byte colPins[colm] = {5, 4, 3, 2}; 
 
-Keypad hokieKeypad = Keypad(makeKeymap(hexakeys), rowPins, colPins, rows, colm);
+Keypad hokieKeypad = Keypad(makeKeymap(keys), rowPins, colPins, rows, colm);
 
 int hokieID = -1;
 char dishType = ' ';
@@ -28,6 +24,10 @@ int numDishes = 0;
 
 void setup() 
 {
+pinMode(13, OUTPUT); //red
+pinMode(12, OUTPUT);//yellow
+pinMode(11, OUTPUT);//green
+pinMode(10, OUTPUT);//blue
   // put your setup code here, to run once:
   Serial.begin(9600); //this is the so that when the program starts, 
                       //it will initialize the serial communication at a baud rate of 9600
@@ -44,6 +44,7 @@ void loop()
 
   if (keyEntry)
   {
+   
     if (hokieID == -1)
     {
       if (keyEntry >= '0' && keyEntry <= '9')
