@@ -80,42 +80,6 @@ void loop()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //cap is percentage (please give me (count/amount can hold)*100)
 void updateLights(int cap){
 if (cap<=50){
