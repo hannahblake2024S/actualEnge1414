@@ -79,11 +79,11 @@ void loop()
   //determine most full
 
   if(numDishes>numCups && numDishes>numUtensils){
-    updateLights((numDishes/10)*100);
+    updateLights(numDishes);
   }else if (numCups> numDishes && numCups>numUtensils){
-    updateLights((numCups/10)*100);
+    updateLights(numCups);
   }else if (numUtensils>numDishes && numUtensils> numCups){
-    updateLights((numUtensils/10)*100);
+    updateLights(numUtensils);
   }else{
      digitalWrite(13, LOW);
   digitalWrite(12, LOW);
@@ -95,13 +95,14 @@ void loop()
 
 
 
-//cap is percentage (please give me (count/amount can hold)*100)
-void updateLights(int cap){
-if (cap<=50){
+//count is current amount
+//we are assuming capacity is 10
+void updateLights(int count){
+if (count<5){
   digitalWrite(13, HIGH);
   digitalWrite(12, LOW);
   digitalWrite(11, LOW);
-}else if (cap<=75){
+}else if (count<8){
   digitalWrite(12, HIGH);
   digitalWrite(13, LOW);
   digitalWrite(11, LOW);
