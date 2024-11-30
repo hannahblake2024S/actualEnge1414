@@ -18,9 +18,16 @@ byte colPins[colm] = {5, 4, 3, 2};
 
 Keypad hokieKeypad = Keypad(makeKeymap(keys), rowPins, colPins, rows, colm);
 
-int hokieID = -1;
+String hokieID = String("-1");
+//note that it can only store 10 ids in this version
+String ids[10];
 char dishType = ' ';
+//type A
 int numDishes = 0;
+//type B
+int numUtensils = 0;
+//type C
+int numCups = 0;
 
 void setup() 
 {
@@ -42,39 +49,41 @@ void loop()
   // put your main code here, to run repeatedly:
   char keyEntry = hokieKeypad.getKey();
 
-  if (keyEntry)
-  {
-   
-    if (hokieID == -1)
-    {
+
       if (keyEntry >= '0' && keyEntry <= '9')
       {
-        hokieID = keyEntry - '0';
-        Serial.print("hokieID: ");
-        Serial.println(hokieID);
-        Serial.println("Enter dish type (A-D): ");
+        hokieID = hokieID + keyEntry;
+      
       }
-    }
-    else if (dishType == ' ')
-    {
-      if (keyEntry >= 'A' && keyEntry <= 'D')
-      {
-        dishType = keyEntry;
-        Serial.print("dishType: ");
-        Serial.println(dishType);
-        Serial.println("Enter number of dishes (1-3): ");
-      }
-    }
-    else if (numDishes == 0)
-    {
-      if (keyEntry >= '1' && keyEntry <= '3')
-      {
-        numDishes = keyEntry;
-        Serial.print("number of dishes: ");
-        Serial.println(numDishes);
-      }
-    }
+  if(keyEntry == 'D'){
+    digitalWrite(13, HIGH);
+    //add hokieid to array 
+    //set hokie id to -1
+
+    //flash blue
+    digitalWrite(10, HIGH);
+    delay(1000);
+    digitalWrite(10, LOW);
   }
+
+  if(keyEntry=='A'){
+    numDishes = numDishes + 1;
+  } else if (keyEntry=='B'){
+    numCups = numCups +1;
+  }else if (keyEntry == 'C'){
+    numUtensils = numUtensils+1;
+  }
+
+  //determine most full
+
+  if(numDishes>=numCups && numDishes>=numUtensils){
+    updateLights((numDishes/10)*100);
+  }else if (numCups>= numDishes && numCups>=numUtensils){
+    updateLights((numCups/10)*100);
+  }else{
+    updateLights((numUtensils/10)*100);
+  }
+  
 }
 
 
