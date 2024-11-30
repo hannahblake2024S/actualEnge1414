@@ -21,12 +21,13 @@ Keypad hokieKeypad = Keypad(makeKeymap(keys), rowPins, colPins, rows, colm);
 String hokieID = String("-1");
 //note that it can only store 10 ids in this version
 String ids[10];
+int idPosition = 0;
 char dishType = ' ';
 //type A
 int numDishes = 0;
-//type B
-int numUtensils = 0;
 //type C
+int numUtensils = 0;
+//type B
 int numCups = 0;
 
 void setup() 
@@ -57,8 +58,9 @@ void loop()
       }
   if(keyEntry == 'D'){
     digitalWrite(13, HIGH);
-    //add hokieid to array 
-    //set hokie id to -1
+    ids[idPosition] = hokieID;
+    idPosition = idPosition +1;
+    hokieID = -1;
 
     //flash blue
     digitalWrite(10, HIGH);
