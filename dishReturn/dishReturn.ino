@@ -22,7 +22,7 @@ String hokieID = String("-1");
 //note that it can only store 10 ids in this version
 String ids[10];
 int idPosition = 0;
-char dishType = ' ';
+
 //type A
 int numDishes = 0;
 //type C
@@ -57,7 +57,7 @@ void loop()
       
       }
   if(keyEntry == 'D'){
-    digitalWrite(13, HIGH);
+   
     ids[idPosition] = hokieID;
     idPosition = idPosition +1;
     hokieID = -1;
@@ -78,12 +78,16 @@ void loop()
 
   //determine most full
 
-  if(numDishes>=numCups && numDishes>=numUtensils){
+  if(numDishes>numCups && numDishes>numUtensils){
     updateLights((numDishes/10)*100);
-  }else if (numCups>= numDishes && numCups>=numUtensils){
+  }else if (numCups> numDishes && numCups>numUtensils){
     updateLights((numCups/10)*100);
-  }else{
+  }else if (numUtensils>numDishes && numUtensils> numCups){
     updateLights((numUtensils/10)*100);
+  }else{
+     digitalWrite(13, LOW);
+  digitalWrite(12, LOW);
+  digitalWrite(11, LOW);
   }
   
 }
