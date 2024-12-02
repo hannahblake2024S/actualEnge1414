@@ -76,6 +76,14 @@ void loop()
     numUtensils = numUtensils+1;
   }
 
+  //reset all counts
+  if (keyEntry == '*'){
+    numDishes = 0;
+    numCups = 0;
+    numUtensils = 0;
+    updateLights(numDishes);
+  }
+
   //determine most full
 
   if(numDishes>numCups && numDishes>numUtensils){
