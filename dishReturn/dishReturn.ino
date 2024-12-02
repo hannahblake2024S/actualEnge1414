@@ -32,17 +32,12 @@ int numCups = 0;
 
 void setup() 
 {
-pinMode(13, OUTPUT); //red
-pinMode(12, OUTPUT);//yellow
-pinMode(11, OUTPUT);//green
-pinMode(10, OUTPUT);//blue
-  // put your setup code here, to run once:
-  Serial.begin(9600); //this is the so that when the program starts, 
-                      //it will initialize the serial communication at a baud rate of 9600
-                      //the baud rate is is the speed at which the data is transmitter over the serial communication
-                      //the serial communication is a method of sending and recieving data one bit at a 
-                      //time over a single wire or channel
-  Serial.println("Enter your hokieID (0-9): ");
+  // set up leds
+pinMode(13, OUTPUT); 
+pinMode(12, OUTPUT);
+pinMode(11, OUTPUT);
+pinMode(10, OUTPUT);
+
 }
 
 void loop() 
